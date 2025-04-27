@@ -837,6 +837,19 @@ uint8_t vrEmuTms9918VramValue(VrEmuTms9918 *tms9918, uint16_t addr)
   return tms9918->vram[addr & VRAM_MASK];
 }
 
+/* Function:  vrEmuTms9918VramValue
+ * ----------------------------------------
+ * write a value to vram
+ */
+VR_EMU_TMS9918_DLLEXPORT
+void vrEmuTms9918WriteVramValue(VrEmuTms9918 *tms9918, uint16_t addr, uint8_t value)
+{
+  if (tms9918 != NULL)
+  {
+    tms9918->vram[addr & VRAM_MASK] = value;
+  }
+}
+
 /* Function:  vrEmuTms9918DisplayEnabled
  * ----------------------------------------
  * check BLANK flag

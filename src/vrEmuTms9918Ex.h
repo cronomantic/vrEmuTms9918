@@ -188,7 +188,7 @@ uint8_t vrEmuTms9918RegValue(VrEmuTms9918 *tms9918, vrEmuTms9918Register reg);
 
 /* Function:  vrEmuTms9918WriteRegValue
  * ----------------------------------------
- * write a reigister value
+ * write a register value
  */
 VR_EMU_TMS9918_DLLEXPORT
 void vrEmuTms9918WriteRegValue(VrEmuTms9918 *tms9918, vrEmuTms9918Register reg, uint8_t value);
@@ -199,6 +199,13 @@ void vrEmuTms9918WriteRegValue(VrEmuTms9918 *tms9918, vrEmuTms9918Register reg, 
  */
 VR_EMU_TMS9918_DLLEXPORT
 uint8_t vrEmuTms9918VramValue(VrEmuTms9918 *tms9918, uint16_t addr);
+
+/* Function:  vrEmuTms9918VramValue
+ * ----------------------------------------
+ * write a value to vram
+ */
+VR_EMU_TMS9918_DLLEXPORT
+void vrEmuTms9918WriteVramValue(VrEmuTms9918 *tms9918, uint16_t addr, uint8_t value);
 
 /* Function:  vrEmuTms9918DisplayEnabled
  * --------------------
