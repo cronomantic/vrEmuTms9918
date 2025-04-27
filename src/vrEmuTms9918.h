@@ -53,6 +53,17 @@
 struct vrEmuTMS9918_s;
 typedef struct vrEmuTMS9918_s VrEmuTms9918;
 
+#ifdef VR_TMS9918_EMU_EXTENDED
+typedef enum
+{
+  TMS_MODE_GRAPHICS_I,
+  TMS_MODE_GRAPHICS_II,
+  TMS_MODE_TEXT,
+  TMS_MODE_MULTICOLOR,
+  TMS_EX_MODE_GRAPHICS_I,
+  TMS_EX_MODE_GRAPHICS_II,
+} vrEmuTms9918Mode;
+#else
 typedef enum
 {
   TMS_MODE_GRAPHICS_I,
@@ -60,7 +71,28 @@ typedef enum
   TMS_MODE_TEXT,
   TMS_MODE_MULTICOLOR,
 } vrEmuTms9918Mode;
+#endif
 
+#ifdef VR_TMS9918_EMU_EXTENDED
+typedef enum
+{
+  TMS_TRANSPARENT = 0,
+  TMS_DK_BLUE,
+  TMS_DK_GREEN,
+  TMS_DK_CYAN,
+  TMS_DK_RED,
+  TMS_DK_MAGENTA,
+  TMS_DK_YELLOW,
+  TMS_BLACK,
+  TMS_BLUE,
+  TMS_GREEN,
+  TMS_CYAN,
+  TMS_RED,
+  TMS_MAGENTA,
+  TMS_YELLOW,
+  TMS_WHITE,
+} vrEmuTms9918Color;
+#else
 typedef enum
 {
   TMS_TRANSPARENT = 0,
@@ -80,6 +112,7 @@ typedef enum
   TMS_GREY,
   TMS_WHITE,
 } vrEmuTms9918Color;
+#endif
 
 typedef enum
 {
@@ -201,6 +234,13 @@ void vrEmuTms9918WriteRegValue(VrEmuTms9918* tms9918, vrEmuTms9918Register reg, 
  */
 VR_EMU_TMS9918_DLLEXPORT
 uint8_t vrEmuTms9918VramValue(VrEmuTms9918* tms9918, uint16_t addr);
+
+/* Function:  vrEmuTms9918VramValue
+ * ----------------------------------------
+ * write a value to vram
+ */
+VR_EMU_TMS9918_DLLEXPORT
+void vrEmuTms9918WriteVramValue(VrEmuTms9918 *tms9918, uint16_t addr, uint8_t value);
 
 
 /* Function:  vrEmuTms9918DisplayEnabled
