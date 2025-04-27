@@ -723,11 +723,10 @@ static void __time_critical_func(vrEmuTms9918GraphicsIExScanLine)(VrEmuTms9918 *
  */
 static void __time_critical_func(vrEmuTms9918GraphicsIIExScanLine)(VrEmuTms9918 *tms9918, uint8_t y, uint8_t pixels[TMS9918_PIXELS_X])
 {
-  const uint8_t tileY = y >> 3;     /* which name table row (0 - 23) */
-  const uint8_t pattRow = y & 0x07; /* which pattern row (0 - 7) */
+  const uint8_t tileY = y >> 3; /* which name table row (0 - 23) */
 
-  const uint16_t colorTableAddr = tmsColorTableAddr(tms9918) + tileY * GRAPHICS_NUM_COLS;
-  const uint16_t pattTableAddr = tmsPatternTableAddr(tms9918) + (tileY * GRAPHICS_NUM_COLS) + pattRow;
+  const uint16_t colorTableAddr = tmsColorTableAddr(tms9918) + (tileY * GRAPHICS_NUM_COLS);
+  const uint16_t pattTableAddr = tmsPatternTableAddr(tms9918) + (y * GRAPHICS_NUM_COLS);
 
   /* iterate over each tile in this row */
   for (uint8_t tileX = 0; tileX < GRAPHICS_NUM_COLS; ++tileX)
