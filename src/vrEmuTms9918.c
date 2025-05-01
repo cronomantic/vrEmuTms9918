@@ -763,9 +763,8 @@ static void __time_critical_func(vrEmuTms9918GraphicsIExScanLine)(VrEmuTms9918 *
   for (uint8_t tileX = 0; tileX < GRAPHICS_NUM_COLS; ++tileX)
   {
     const uint8_t pattIdx = tms9918->vram[rowNamesAddr + tileX];
-    const uint8_t colorByte = tms9918->vram[colorTableAddr + tileX];
-
     uint8_t pattByte = patternTable[pattIdx * PATTERN_BYTES + pattRow];
+    const uint8_t colorByte = tms9918->vram[colorTableAddr + tileX];
 
     const uint8_t fgColor = tmsFgColor(tms9918, colorByte);
     const uint8_t bgColor = tmsBgColor(tms9918, colorByte);
@@ -857,8 +856,10 @@ VR_EMU_TMS9918_DLLEXPORT void __time_critical_func(vrEmuTms9918ScanLine)(VrEmuTm
 
   case TMS_EX_MODE_GRAPHICS_II:
     vrEmuTms9918GraphicsIIExScanLine(tms9918, y, pixels);
-    break;  
+    break;
 #endif
+  default:
+    break;
   }
 
   if (y == TMS9918_PIXELS_Y - 1 && (tms9918->registers[1] & TMS_R1_INT_ENABLE))
