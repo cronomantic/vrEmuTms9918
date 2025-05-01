@@ -210,7 +210,7 @@ static inline uint16_t tmsColorTableAddr(VrEmuTms9918 *tms9918)
   case TMS_EX_MODE_GRAPHICS_I:
     return (tms9918->registers[TMS_REG_COLOR_TABLE] & 0x0f) << 10;
   case TMS_EX_MODE_GRAPHICS_II:
-    return (tms9918->registers[TMS_REG_COLOR_TABLE] & 0x0f) << 11;
+    return (tms9918->registers[TMS_REG_COLOR_TABLE] & 0x07) << 11;
   default:
     return (tms9918->registers[TMS_REG_COLOR_TABLE] & 0xff) << 6;
   }
